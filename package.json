@@ -1,0 +1,22 @@
+{
+  "name": "g3-sort-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabrielzg1/g3-sort-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gabrielzg1/g3-sort-backend/issues"
+  },
+  "homepage": "https://github.com/Gabrielzg1/g3-sort-backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
