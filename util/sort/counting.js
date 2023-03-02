@@ -1,4 +1,4 @@
-//Criar um algoritimo que recebe um array desordenado e o ordena utilizando bubble Sort
+//Criar um algoritimo que recebe um array desordenado e o ordena utilizando couting Sort
 function countingSort(arr, maxVal) {
 	let bucket = new Array(maxVal + 1).fill(0);
 	let sortedArr = [];
