@@ -7,7 +7,7 @@ const bubbleSort = require("./util/sort/bubble");
 const radixSort = require("./util/sort/radix");
 
 const app = express();
-const port = 3000;
+const port = 2020;
 
 app.use(bodyParser.json());
 
@@ -27,7 +27,6 @@ app.post("/counting", async (req, res) => {
 		var final = Date.now();
 
 		return res.json({ time: final - initial, array }).status(200);
-
 	} catch (err) {
 		console.error(err);
 		return res.json(err).status(500);
@@ -45,13 +44,11 @@ app.post("/bubble", async (req, res) => {
 		var final = Date.now();
 
 		return res.json({ time: final - initial, array }).status(200);
-
 	} catch (err) {
 		console.error(err);
 		return res.json(err).status(500);
 	}
 });
-
 
 app.post("/radix", async (req, res) => {
 	try {
@@ -65,14 +62,11 @@ app.post("/radix", async (req, res) => {
 		var final = Date.now();
 
 		return res.json({ time: final - initial, array }).status(200);
-
 	} catch (err) {
 		console.error(err);
 		return res.json(err).status(500);
 	}
-
 });
-
 
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
