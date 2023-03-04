@@ -14,7 +14,8 @@ const port = 2020;
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-	return res.json({ hello: "rota teste" });
+	return res.send("<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
+		"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>");
 });
 
 //Rotas para algoritmos de Sorting
@@ -116,5 +117,5 @@ app.post("/linear", async (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
+	console.log(`Rodando em http://localhost:${port}`);
 });
