@@ -1,44 +1,20 @@
-function search(arr,n){
+function binary(arr, target) {
+	let left = 0;
+	let right = arr.length - 1;
 
-    let res=0
-    let m=parseInt(arr.length/2)
-    let p=m
-    let f=parseInt(arr.length)
-    let i=1
+	while (left <= right) {
+		let mid = Math.floor((left + right) / 2);
 
-    function binarysearch(p){
+		if (arr[mid] === target) {
+			return mid;
+		} else if (arr[mid] < target) {
+			left = mid + 1;
+		} else {
+			right = mid - 1;
+		}
+	}
 
-        if(arr[p]==n){
-            return 0
-        }
-
-        if((f-p)<=0){
-            return 1
-        }
-
-        if(n<arr[p]){
-            f=p-1
-            p=parseInt((f-i)/2)
-            res = binarysearch(p)
-            return res
-        }
-        else if(arr[p]<n){
-            i=p+1
-            p=parseInt((f+i)/2)
-            res = binarysearch(p)
-            return res
-        }
-    }
-
-
-
-    if (binarysearch(p)==0){
-        console.log("Contem")
-    }
-    else{
-        console.log("Nao Contem")
-    }
-
+	return -1;
 }
 
-module.exports = search
+module.exports = binary;
