@@ -1,5 +1,6 @@
 const express = require("express");
 var bodyParser = require("body-parser");
+const cors = require("cors");
 
 const random = require("./util/random");
 const countingSort = require("./util/sort/counting");
@@ -13,9 +14,19 @@ const port = 2020;
 
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+	res.header("Access-Control-Allow-Origin", "*");
+	//Quais são os métodos que a conexão pode realizar na API
+	res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+	app.use(cors());
+	next();
+});
 app.get("/", (req, res) => {
-	return res.send("<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
-		"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>");
+	return res.send(
+		"<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
+			"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
+	);
 });
 
 //Rotas para algoritmos de Sorting
