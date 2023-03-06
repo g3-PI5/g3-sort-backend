@@ -1,5 +1,6 @@
 const express = require("express");
 var bodyParser = require("body-parser");
+const cors = require("cors");
 
 const random = require("./util/random");
 const countingSort = require("./util/sort/counting");
@@ -13,8 +14,19 @@ const port = 2020;
 
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+	//Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+	res.header("Access-Control-Allow-Origin", "*");
+	//Quais são os métodos que a conexão pode realizar na API
+	res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+	app.use(cors());
+	next();
+});
 app.get("/", (req, res) => {
-	return res.json({ hello: "rota teste" });
+	return res.send(
+		"<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
+		"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
+	);
 });
 
 //Rotas para algoritmos de Sorting
@@ -22,7 +34,7 @@ app.post("/counting", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -39,7 +51,7 @@ app.post("/bubble", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -57,7 +69,7 @@ app.post("/radix", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -76,12 +88,11 @@ app.post("/binary", async (req, res) => {
 	try {
 		const { value, target } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		if (target < 20 || target > 2000000)
-			return res.json({ valueErr: "Out of range target" });
-
+			return res.json({ valueErr: "Out of range target" }).status(500);
 		const arr = random(value);
-		const sortedArray = countingSort(arr, value);
+		const sortedArray = radixSort(arr);
 
 		var initial = Date.now();
 		const index = binary(sortedArray, target);
@@ -98,9 +109,9 @@ app.post("/linear", async (req, res) => {
 	try {
 		const { value, target } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		if (target < 20 || target > 2000000)
-			return res.json({ valueErr: "Out of range target" });
+			return res.json({ valueErr: "Out of range target" }).status(500);
 
 		const arr = random(value);
 		const sortedArray = countingSort(arr, value);
@@ -116,5 +127,5 @@ app.post("/linear", async (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
+	console.log(`Rodando em http://localhost:${port}`);
 });

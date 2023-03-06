@@ -1,4 +1,4 @@
-//Criar um algoritimo que recebe um array desordenado e o ordena utilizando merge Sort
+//Criar um algoritimo que recebe um array desordenado e o ordena utilizando radix Sort
 function radixSort(arr) {
     const radix = 10; // define a base decimal
     let maxLength = false;
