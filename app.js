@@ -52,7 +52,6 @@ app.post("/bubble", async (req, res) => {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
 			return res.json({ valueErr: "Out of range value" }).status(500);
-
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -93,18 +92,13 @@ app.post("/binary", async (req, res) => {
 		if (target < 20 || target > 2000000)
 			return res.json({ valueErr: "Out of range target" }).status(500);
 		const arr = random(value);
-		var initial, final, index;
-		const sortedArray = radixSort(arr).then(() => {
-			initial = Date.now()
-			index = binary(sortedArray, target)
-			final = Date.now()
-			return res.json({ time: final - initial, index, sortedArray }).status(200);
-		}
-		);
+		const sortedArray = radixSort(arr);
 
+		var initial = Date.now();
+		const index = binary(sortedArray, target);
+		var final = Date.now();
 
-
-
+		return res.json({ time: final - initial, index, sortedArray }).status(200);
 	} catch (err) {
 		console.error(err);
 		return res.json(err).status(500);
