@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
 	return res.send(
 		"<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
-			"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
+		"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
 	);
 });
 
@@ -34,7 +34,7 @@ app.post("/counting", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -51,7 +51,7 @@ app.post("/bubble", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -69,7 +69,7 @@ app.post("/radix", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
 
 		var initial = Date.now();
@@ -88,12 +88,11 @@ app.post("/binary", async (req, res) => {
 	try {
 		const { value, target } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		if (target < 20 || target > 2000000)
-			return res.json({ valueErr: "Out of range target" });
-
+			return res.json({ valueErr: "Out of range target" }).status(500);
 		const arr = random(value);
-		const sortedArray = countingSort(arr, value);
+		const sortedArray = radixSort(arr);
 
 		var initial = Date.now();
 		const index = binary(sortedArray, target);
@@ -110,9 +109,9 @@ app.post("/linear", async (req, res) => {
 	try {
 		const { value, target } = req.body;
 		if (value < 10000 || value > 1000000)
-			return res.json({ valueErr: "Out of range value" });
+			return res.json({ valueErr: "Out of range value" }).status(500);
 		if (target < 20 || target > 2000000)
-			return res.json({ valueErr: "Out of range target" });
+			return res.json({ valueErr: "Out of range target" }).status(500);
 
 		const arr = random(value);
 		const sortedArray = countingSort(arr, value);
