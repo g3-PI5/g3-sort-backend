@@ -3,11 +3,12 @@ var bodyParser = require("body-parser");
 const cors = require("cors");
 
 const random = require("./util/random");
-const countingSort = require("./util/sort/counting");
+const countingSort = require("./util/sort/selection");
 const bubbleSort = require("./util/sort/bubble");
 const radixSort = require("./util/sort/radix");
 const binary = require("./util/search/binary");
 const linear = require("./util/search/linear");
+const selectionSort = require("./util/sort/selection");
 
 const app = express();
 const port = 2020;
@@ -30,7 +31,7 @@ app.get("/", (req, res) => {
 });
 
 //Rotas para algoritmos de Sorting
-app.post("/counting", async (req, res) => {
+app.post("/selection", async (req, res) => {
 	try {
 		const { value } = req.body;
 		if (value < 10000 || value > 1000000)
@@ -38,7 +39,7 @@ app.post("/counting", async (req, res) => {
 		const arr = random(value);
 
 		var initial = Date.now();
-		const array = countingSort(arr, value);
+		const array = selectionSort(arr);
 		var final = Date.now();
 
 		return res.json({ time: final - initial, array }).status(200);
@@ -53,6 +54,7 @@ app.post("/bubble", async (req, res) => {
 		if (value < 10000 || value > 1000000)
 			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
+
 
 		var initial = Date.now();
 		const array = bubbleSort(arr);
@@ -93,7 +95,7 @@ app.post("/binary", async (req, res) => {
 			return res.json({ valueErr: "Out of range target" }).status(500);
 		const arr = random(value);
 		const sortedArray = radixSort(arr);
-		console.log(req.body);
+
 
 		var initial = Date.now();
 		const index = binary(sortedArray, target);
