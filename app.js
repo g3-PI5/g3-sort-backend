@@ -93,6 +93,7 @@ app.post("/binary", async (req, res) => {
 			return res.json({ valueErr: "Out of range target" }).status(500);
 		const arr = random(value);
 		const sortedArray = radixSort(arr);
+		console.log(req.body);
 
 		var initial = Date.now();
 		const index = binary(sortedArray, target);
@@ -114,7 +115,9 @@ app.post("/linear", async (req, res) => {
 			return res.json({ valueErr: "Out of range target" }).status(500);
 
 		const arr = random(value);
-		const sortedArray = countingSort(arr, value);
+		const sortedArray = radixSort(arr);
+
+
 		var initial = Date.now();
 		const index = linear(sortedArray, target);
 		var final = Date.now();

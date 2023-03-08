@@ -1,6 +1,7 @@
 // Criar uma funcao que dado um valor X, crie um array de numeros aleatórios com tamanho X.
 
 //Função para gerar um númeor aleatório e inteiro entre valor min e máx
+
 function random(quantidade) {
 	function intaleatorio(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) + min);
