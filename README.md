@@ -6,6 +6,9 @@ Bruno Nascimento - 21008214 <br>
 Igor Roelli - 21003446 <br>
 Giancarlo Biagini - 21004808
 
+## Pré Requesitos:
+Node.js Instalado.
+
 ## Passo a passo para executar
 ### Instalar as Dependências
 <i>npm i </i>
