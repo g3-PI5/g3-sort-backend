@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
 	return res.send(
 		"<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
-		"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
+			"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
 	);
 });
 
@@ -45,6 +45,7 @@ app.post("/selection", async (req, res) => {
 		return res.json({ time: final - initial, array }).status(200);
 	} catch (err) {
 		console.error(err);
+
 		return res.json(err).status(500);
 	}
 });
@@ -54,7 +55,6 @@ app.post("/bubble", async (req, res) => {
 		if (value < 10000 || value > 1000000)
 			return res.json({ valueErr: "Out of range value" }).status(500);
 		const arr = random(value);
-
 
 		var initial = Date.now();
 		const array = bubbleSort(arr);
@@ -96,7 +96,6 @@ app.post("/binary", async (req, res) => {
 		const arr = random(value);
 		const sortedArray = radixSort(arr);
 
-
 		var initial = Date.now();
 		const index = binary(sortedArray, target);
 		var final = Date.now();
@@ -118,7 +117,6 @@ app.post("/linear", async (req, res) => {
 
 		const arr = random(value);
 		const sortedArray = radixSort(arr);
-
 
 		var initial = Date.now();
 		const index = linear(sortedArray, target);
