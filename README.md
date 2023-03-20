@@ -17,7 +17,6 @@ Node.js Instalado.
 ### Utilizacao do docker
 
 <i>docker build . -t <your username>/g3-sort-backend</i>
-<i>docker run -d -p 127.0.0.1:80:2020 <your username>/g3-sort-backend</i>
 
 <p>Dependências instaladas: </p>
 <ul>
@@ -29,4 +28,4 @@ Node.js Instalado.
 
 ### Rodar o aplicativo
 
-<i>npm run dev</i>
+<i>docker run -d -p 127.0.0.1:80:2020 <your username>/g3-sort-backend</i>

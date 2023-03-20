@@ -130,5 +130,5 @@ app.post("/linear", async (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Rodando em http://localhost:${port}`);
+	//console.log(`Rodando em http://localhost:${port}`);
 });
