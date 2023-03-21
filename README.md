@@ -28,4 +28,4 @@ Node.js Instalado.
 
 ### Rodar o aplicativo
 
-<i>docker run -d -p 127.0.0.1:80:2020 {your username}/g3-sort-backend</i>
+<i>docker run -d -p 2020:2020 {your username}/g3-sort-backend</i>
