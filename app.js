@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
 	return res.send(
 		"<h1>API de cálculo de tempo de execução dos seguintes algoritmos:" +
-			"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
+		"</h1 > <h1>Counting Sort, Radix Sort, Bubble Sort, Binary Search e Linear Search</h1>"
 	);
 });
 
@@ -130,5 +130,5 @@ app.post("/linear", async (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Rodando em http://localhost:${port}`);
+	console.log(`Rodando em 127.0.0.1:${port}`);
 });
